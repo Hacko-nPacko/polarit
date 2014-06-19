@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F946794A1953037E00895D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94679491953037E00895D21 /* AppDelegate.swift */; };
+		F946794C1953037E00895D21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946794B1953037E00895D21 /* ViewController.swift */; };
+		F946794F1953037E00895D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F946794D1953037E00895D21 /* Main.storyboard */; };
+		F94679511953037E00895D21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94679501953037E00895D21 /* Images.xcassets */; };
+		F946795D1953037F00895D21 /* polaritTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946795C1953037F00895D21 /* polaritTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F94679571953037F00895D21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F946793C1953037E00895D21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F94679431953037E00895D21;
+			remoteInfo = polarit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F94679441953037E00895D21 /* polarit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = polarit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F94679481953037E00895D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F94679491953037E00895D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F946794B1953037E00895D21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F946794E1953037E00895D21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F94679501953037E00895D21 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F94679561953037E00895D21 /* polaritTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = polaritTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F946795B1953037F00895D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F946795C1953037F00895D21 /* polaritTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = polaritTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F94679411953037E00895D21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F94679531953037E00895D21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F946793B1953037E00895D21 = {
+			isa = PBXGroup;
+			children = (
+				F94679461953037E00895D21 /* polarit */,
+				F94679591953037F00895D21 /* polaritTests */,
+				F94679451953037E00895D21 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F94679451953037E00895D21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F94679441953037E00895D21 /* polarit.app */,
+				F94679561953037E00895D21 /* polaritTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F94679461953037E00895D21 /* polarit */ = {
+			isa = PBXGroup;
+			children = (
+				F94679491953037E00895D21 /* AppDelegate.swift */,
+				F946794B1953037E00895D21 /* ViewController.swift */,
+				F946794D1953037E00895D21 /* Main.storyboard */,
+				F94679501953037E00895D21 /* Images.xcassets */,
+				F94679471953037E00895D21 /* Supporting Files */,
+			);
+			path = polarit;
+			sourceTree = "<group>";
+		};
+		F94679471953037E00895D21 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F94679481953037E00895D21 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F94679591953037F00895D21 /* polaritTests */ = {
+			isa = PBXGroup;
+			children = (
+				F946795C1953037F00895D21 /* polaritTests.swift */,
+				F946795A1953037F00895D21 /* Supporting Files */,
+			);
+			path = polaritTests;
+			sourceTree = "<group>";
+		};
+		F946795A1953037F00895D21 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F946795B1953037F00895D21 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F94679431953037E00895D21 /* polarit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F94679601953037F00895D21 /* Build configuration list for PBXNativeTarget "polarit" */;
+			buildPhases = (
+				F94679401953037E00895D21 /* Sources */,
+				F94679411953037E00895D21 /* Frameworks */,
+				F94679421953037E00895D21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = polarit;
+			productName = polarit;
+			productReference = F94679441953037E00895D21 /* polarit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F94679551953037E00895D21 /* polaritTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F94679631953037F00895D21 /* Build configuration list for PBXNativeTarget "polaritTests" */;
+			buildPhases = (
+				F94679521953037E00895D21 /* Sources */,
+				F94679531953037E00895D21 /* Frameworks */,
+				F94679541953037E00895D21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F94679581953037F00895D21 /* PBXTargetDependency */,
+			);
+			name = polaritTests;
+			productName = polaritTests;
+			productReference = F94679561953037E00895D21 /* polaritTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F946793C1953037E00895D21 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Atanas Balevsky";
+				TargetAttributes = {
+					F94679431953037E00895D21 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					F94679551953037E00895D21 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = F94679431953037E00895D21;
+					};
+				};
+			};
+			buildConfigurationList = F946793F1953037E00895D21 /* Build configuration list for PBXProject "polarit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F946793B1953037E00895D21;
+			productRefGroup = F94679451953037E00895D21 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F94679431953037E00895D21 /* polarit */,
+				F94679551953037E00895D21 /* polaritTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F94679421953037E00895D21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F946794F1953037E00895D21 /* Main.storyboard in Resources */,
+				F94679511953037E00895D21 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F94679541953037E00895D21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F94679401953037E00895D21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F946794C1953037E00895D21 /* ViewController.swift in Sources */,
+				F946794A1953037E00895D21 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F94679521953037E00895D21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F946795D1953037F00895D21 /* polaritTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F94679581953037F00895D21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F94679431953037E00895D21 /* polarit */;
+			targetProxy = F94679571953037F00895D21 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F946794D1953037E00895D21 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F946794E1953037E00895D21 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F946795E1953037F00895D21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F946795F1953037F00895D21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				METAL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F94679611953037F00895D21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = polarit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F94679621953037F00895D21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = polarit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F94679641953037F00895D21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/polarit.app/polarit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = polaritTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		F94679651953037F00895D21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/polarit.app/polarit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = polaritTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F946793F1953037E00895D21 /* Build configuration list for PBXProject "polarit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F946795E1953037F00895D21 /* Debug */,
+				F946795F1953037F00895D21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F94679601953037F00895D21 /* Build configuration list for PBXNativeTarget "polarit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F94679611953037F00895D21 /* Debug */,
+				F94679621953037F00895D21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F94679631953037F00895D21 /* Build configuration list for PBXNativeTarget "polaritTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F94679641953037F00895D21 /* Debug */,
+				F94679651953037F00895D21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F946793C1953037E00895D21 /* Project object */;
+}
