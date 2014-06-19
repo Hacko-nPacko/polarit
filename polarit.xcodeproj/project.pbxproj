@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5572F3B7B33649C9B6A0F93E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1C2D19C3EE4B50B99D39AC /* libPods.a */; };
 		F946794A1953037E00895D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94679491953037E00895D21 /* AppDelegate.swift */; };
 		F946794C1953037E00895D21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946794B1953037E00895D21 /* ViewController.swift */; };
 		F946794F1953037E00895D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F946794D1953037E00895D21 /* Main.storyboard */; };
@@ -25,6 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A1C2D19C3EE4B50B99D39AC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B386F9F8FBE4FA08322050D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F94679441953037E00895D21 /* polarit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = polarit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94679481953037E00895D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F94679491953037E00895D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		F94679561953037E00895D21 /* polaritTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = polaritTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F946795B1953037F00895D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F946795C1953037F00895D21 /* polaritTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = polaritTests.swift; sourceTree = "<group>"; };
+		F9DD26BD195314A900298B9E /* polarit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "polarit-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5572F3B7B33649C9B6A0F93E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,12 +59,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EBBBC9A7FD294EE09D59D634 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A1C2D19C3EE4B50B99D39AC /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F946793B1953037E00895D21 = {
 			isa = PBXGroup;
 			children = (
 				F94679461953037E00895D21 /* polarit */,
 				F94679591953037F00895D21 /* polaritTests */,
 				F94679451953037E00895D21 /* Products */,
+				6B386F9F8FBE4FA08322050D /* Pods.xcconfig */,
+				EBBBC9A7FD294EE09D59D634 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				F94679481953037E00895D21 /* Info.plist */,
+				F9DD26BD195314A900298B9E /* polarit-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -116,9 +132,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F94679601953037F00895D21 /* Build configuration list for PBXNativeTarget "polarit" */;
 			buildPhases = (
+				91F0FE3893794704A6B6009B /* Check Pods Manifest.lock */,
 				F94679401953037E00895D21 /* Sources */,
 				F94679411953037E00895D21 /* Frameworks */,
 				F94679421953037E00895D21 /* Resources */,
+				019B4BC103C54E908B2261DC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,6 +176,7 @@
 				TargetAttributes = {
 					F94679431953037E00895D21 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = EB59AW96ZD;
 					};
 					F94679551953037E00895D21 = {
 						CreatedOnToolsVersion = 6.0;
@@ -202,6 +221,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		019B4BC103C54E908B2261DC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91F0FE3893794704A6B6009B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F94679401953037E00895D21 /* Sources */ = {
@@ -324,23 +376,29 @@
 		};
 		F94679611953037F00895D21 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B386F9F8FBE4FA08322050D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = polarit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "polarit/polarit-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		F94679621953037F00895D21 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B386F9F8FBE4FA08322050D /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = polarit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "polarit/polarit-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -399,6 +457,7 @@
 				F94679621953037F00895D21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F94679631953037F00895D21 /* Build configuration list for PBXNativeTarget "polaritTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +466,7 @@
 				F94679651953037F00895D21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
