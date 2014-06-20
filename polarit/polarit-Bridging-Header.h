@@ -8,3 +8,5 @@
 
 
 #import <GPUImage/GPUImage.h>
+#import <OpenGLES/gltypes.h>
+#import "PolarFilter.h"

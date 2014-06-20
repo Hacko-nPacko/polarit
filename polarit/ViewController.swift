@@ -9,54 +9,67 @@
 import UIKit
 
 class ViewController: UIViewController {
-                            
+    
+    let videoCamera:GPUImageStillCamera
+    var lastFilter:GPUImageFilter!
+    
+    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    init(coder aDecoder: NSCoder!) {
+        videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        videoCamera.outputImageOrientation = .Portrait
+        videoCamera.horizontallyMirrorFrontFacingCamera = false
+        videoCamera.horizontallyMirrorRearFacingCamera = false
+                
+        //let sepiaFilter = GPUImageSepiaFilter()
+        let polarFilter = PolarFilter()
+        videoCamera.addTarget(polarFilter)
+//        sepiaFilter.addTarget(polarFilter)
+        polarFilter.addTarget(view as GPUImageView)
+        videoCamera.startCameraCapture()
+        
+        lastFilter = polarFilter
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    override func viewWillAppear(animated: Bool) {
-        
-        /*
-GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc]
-initWithSessionPreset:AVCaptureSessionPreset640x480
-cameraPosition:AVCaptureDevicePositionBack];
-
-        videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-
-GPUImageFilter *filter = [[GPUImageLevelsFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];
-[filter setRedMin:0.299 gamma:1.0 max:1.0 minOut:0.0 maxOut:1.0];
-[filter setGreenMin:0.587 gamma:1.0 max:1.0 minOut:0.0 maxOut:1.0];
-[filter setBlueMin:0.114 gamma:1.0 max:1.0 minOut:0.0 maxOut:1.0];
-[videoCamera addTarget:filter];
-
-GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:self.view.bounds];
-[filter addTarget:filteredVideoView];
-[self.view addSubview:filteredVideoView];
-
-[videoCamera startCameraCapture];
-*/
-        let videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
-        videoCamera.outputImageOrientation = .Portrait
-        
-        let filter = GPUImageLevelsFilter(fragmentShaderFromFile: "CustomShader")
-        filter.setRedMin(0.299, gamma:1.0, max:1.0, minOut:0.0, maxOut:1.0)
-        filter.setGreenMin(0.587, gamma:1.0, max:1.0, minOut:0.0, maxOut:1.0)
-        filter.setBlueMin(0.114, gamma:1.0, max:1.0, minOut:0.0, maxOut:1.0)
-        videoCamera.addTarget(filter)
-        
-        let filteredVideoView = GPUImageView(frame: self.view.bounds)
-        filter.addTarget(filteredVideoView)
-        view.addSubview(filteredVideoView)
-        
-        videoCamera.startCameraCapture()
     }
 
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        var orient:UIInterfaceOrientation = .Portrait
+        switch (UIDevice.currentDevice().orientation) {
+        case .LandscapeLeft:
+            orient = .LandscapeLeft
+        case .LandscapeRight:
+            orient = .LandscapeRight
+        case .Portrait:
+            orient = .Portrait
+        case .PortraitUpsideDown:
+            orient = .PortraitUpsideDown
+        default:
+            orient = fromInterfaceOrientation
+        }
+        videoCamera.outputImageOrientation = orient;
+
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return true
+    }
+    
+    @IBAction func savePicture() {
+        videoCamera.capturePhotoAsImageProcessedUpToFilter(lastFilter, withCompletionHandler: { (image, error) -> Void in
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        })
+    }
 }
 
