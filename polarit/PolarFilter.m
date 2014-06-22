@@ -12,16 +12,10 @@ NSString *const kVertexShader = SHADER_STRING
 (
  attribute vec4 position;
  attribute vec4 inputTextureCoordinate;
- 
  varying vec2 textureCoordinate;
- uniform highp vec2 center;
+
  
- void main()
- {
-     float len = length(position);
-     float thita = atan(position.x, position.y);
-     float radius = 0.5;
-//     gl_Position = vec4(len * thita * radius + center.x, len * thita * radius + center.y, position.z, position.w) ;//position + ;
+ void main() {
      gl_Position = position;
      textureCoordinate = inputTextureCoordinate.xy;
  }
@@ -31,8 +25,21 @@ NSString *const kFragmentShader = SHADER_STRING
 (
  varying highp vec2 textureCoordinate;
  uniform sampler2D inputImageTexture;
- 
+ const highp float PI = 3.14159265358979323846264;
+ const highp vec2 center = vec2(0.5);
+
  void main() {
+     highp vec4 color;
+     highp vec2 calcPoint = textureCoordinate - center;
+     
+     if (pow(abs(calcPoint.x), 2.0) + pow(abs(calcPoint.y), 2.0) <= pow(0.5, 2.0)) {
+         highp float rad = length(calcPoint) * 2.0;
+         highp float thita = ((atan(calcPoint.y, calcPoint.x)/ PI) + 1.0) / 2.0;
+         highp vec2 polar = vec2(thita, rad);
+         color = texture2D(inputImageTexture, polar);
+     } else {
+         color = vec4(0.0);
+     }
      gl_FragColor = color;
  }
  );
@@ -40,24 +47,10 @@ NSString *const kFragmentShader = SHADER_STRING
 
 @implementation PolarFilter
 - (id)init {
-    if (!(self = [super initWithVertexShaderFromString:kVertexShader fragmentShaderFromString:kGPUImagePassthroughFragmentShaderString])) {
+    if (!(self = [super initWithVertexShaderFromString:kVertexShader fragmentShaderFromString:kFragmentShader])) {
         return nil;
     }
-    
-    centerUniform = [filterProgram uniformIndex:@"center"];
-    self.center = CGPointMake(0.5, 0.5);
     return self;
 }
 
-- (void)setInputRotation:(GPUImageRotationMode)newInputRotation atIndex:(NSInteger)textureIndex {
-    [super setInputRotation:newInputRotation atIndex:textureIndex];
-    [self setCenter:self.center];
-}
-
-- (void)setCenter:(CGPoint)newValue {
-    _center = newValue;
-    
-    CGPoint rotatedPoint = [self rotatedPoint:_center forRotation:inputRotation];
-    [self setPoint:rotatedPoint forUniform:centerUniform program:filterProgram];
-}
 @end

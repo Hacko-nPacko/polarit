@@ -14,6 +14,10 @@
 		F946794F1953037E00895D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F946794D1953037E00895D21 /* Main.storyboard */; };
 		F94679511953037E00895D21 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F94679501953037E00895D21 /* Images.xcassets */; };
 		F946795D1953037F00895D21 /* polaritTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946795C1953037F00895D21 /* polaritTests.swift */; };
+		F94AE9C119559269000E6F4D /* camera-128.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9BF19559269000E6F4D /* camera-128.png */; };
+		F94AE9C219559269000E6F4D /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9C019559269000E6F4D /* camera.png */; };
+		F94AE9C6195592D2000E6F4D /* camera-back-128.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9C5195592D2000E6F4D /* camera-back-128.png */; };
+		F94AE9C9195596A7000E6F4D /* launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9C8195596A7000E6F4D /* launch@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +45,10 @@
 		F94679561953037E00895D21 /* polaritTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = polaritTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F946795B1953037F00895D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F946795C1953037F00895D21 /* polaritTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = polaritTests.swift; sourceTree = "<group>"; };
+		F94AE9BF19559269000E6F4D /* camera-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-128.png"; sourceTree = "<group>"; };
+		F94AE9C019559269000E6F4D /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		F94AE9C5195592D2000E6F4D /* camera-back-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-back-128.png"; sourceTree = "<group>"; };
+		F94AE9C8195596A7000E6F4D /* launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch@2x.png"; sourceTree = "<group>"; };
 		F9DD26BD195314A900298B9E /* polarit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "polarit-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +124,7 @@
 		F94679471953037E00895D21 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F9630CFE19548483001A0D13 /* images */,
 				F91E19C7195378FC00BD9643 /* objc */,
 				F94679481953037E00895D21 /* Info.plist */,
 				F9DD26BD195314A900298B9E /* polarit-Bridging-Header.h */,
@@ -138,6 +147,25 @@
 				F946795B1953037F00895D21 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F94AE9C7195596A7000E6F4D /* launch */ = {
+			isa = PBXGroup;
+			children = (
+				F94AE9C8195596A7000E6F4D /* launch@2x.png */,
+			);
+			path = launch;
+			sourceTree = "<group>";
+		};
+		F9630CFE19548483001A0D13 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F94AE9C7195596A7000E6F4D /* launch */,
+				F94AE9BF19559269000E6F4D /* camera-128.png */,
+				F94AE9C5195592D2000E6F4D /* camera-back-128.png */,
+				F94AE9C019559269000E6F4D /* camera.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,7 +256,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F94AE9C6195592D2000E6F4D /* camera-back-128.png in Resources */,
+				F94AE9C219559269000E6F4D /* camera.png in Resources */,
 				F946794F1953037E00895D21 /* Main.storyboard in Resources */,
+				F94AE9C9195596A7000E6F4D /* launch@2x.png in Resources */,
+				F94AE9C119559269000E6F4D /* camera-128.png in Resources */,
 				F94679511953037E00895D21 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

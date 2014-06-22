@@ -12,34 +12,46 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GPUImageView">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleAspectFill" id="8bC-Xf-vdC" customClass="GPUImageView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TjX-IZ-LsF">
-                                <rect key="frame" x="203" y="450" width="75" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="75" id="TU2-jA-EMW"/>
-                                </constraints>
-                                <state key="normal" title="Save!">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hp-rV-gu8">
+                                <rect key="frame" x="176" y="352" width="128" height="128"/>
+                                <state key="normal" image="camera-128.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="savePicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="XrN-0N-9jT"/>
+                                    <action selector="savePicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Y6-og-X7a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xND-MV-XDL">
+                                <rect key="frame" x="312" y="410" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="savePrevPicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="VIB-3u-CuY"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TjX-IZ-LsF" secondAttribute="bottom" id="79x-St-7z3"/>
-                            <constraint firstAttribute="centerX" secondItem="TjX-IZ-LsF" secondAttribute="centerX" id="f4r-xQ-aqW"/>
+                            <constraint firstItem="4hp-rV-gu8" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="kcy-Pv-1EN"/>
+                            <constraint firstAttribute="centerX" secondItem="4hp-rV-gu8" secondAttribute="centerX" id="yuT-pV-NTx"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <connections>
+                        <outlet property="gpuImageView" destination="8bC-Xf-vdC" id="qO5-GY-DEv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="127" y="196"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera-128.png" width="128" height="128"/>
+    </resources>
 </document>

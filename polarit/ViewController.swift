@@ -12,14 +12,16 @@ class ViewController: UIViewController {
     
     let videoCamera:GPUImageStillCamera
     var lastFilter:GPUImageFilter!
+    var prevFilter:GPUImageFilter!
+    @IBOutlet var gpuImageView:GPUImageView
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     init(coder aDecoder: NSCoder!) {
-        videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
         super.init(coder: aDecoder)
     }
     
@@ -27,47 +29,44 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         videoCamera.outputImageOrientation = .Portrait
-        videoCamera.horizontallyMirrorFrontFacingCamera = false
-        videoCamera.horizontallyMirrorRearFacingCamera = false
+        
+        let mirrorFilter = GPUImageTransformFilter()
+        mirrorFilter.affineTransform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        videoCamera.addTarget(mirrorFilter)
+        
+        let scaleFilter = GPUImageTransformFilter() //
+        scaleFilter.affineTransform = CGAffineTransformMakeScale(1, 720/1280)
+        mirrorFilter.addTarget(scaleFilter)
                 
-        //let sepiaFilter = GPUImageSepiaFilter()
+        
+        let cropFilter = GPUImageCropFilter(cropRegion: CGRectMake(0, (1280-720)/2/1280, 1, 720/1280))
+        scaleFilter.addTarget(cropFilter)
+        
         let polarFilter = PolarFilter()
-        videoCamera.addTarget(polarFilter)
-//        sepiaFilter.addTarget(polarFilter)
-        polarFilter.addTarget(view as GPUImageView)
+        cropFilter.addTarget(polarFilter)
+        polarFilter.addTarget(gpuImageView)
         videoCamera.startCameraCapture()
         
+        prevFilter = cropFilter
         lastFilter = polarFilter
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        var orient:UIInterfaceOrientation = .Portrait
-        switch (UIDevice.currentDevice().orientation) {
-        case .LandscapeLeft:
-            orient = .LandscapeLeft
-        case .LandscapeRight:
-            orient = .LandscapeRight
-        case .Portrait:
-            orient = .Portrait
-        case .PortraitUpsideDown:
-            orient = .PortraitUpsideDown
-        default:
-            orient = fromInterfaceOrientation
-        }
-        videoCamera.outputImageOrientation = orient;
-
-    }
     
     override func shouldAutorotate() -> Bool {
-        return true
+        return false
     }
     
     @IBAction func savePicture() {
         videoCamera.capturePhotoAsImageProcessedUpToFilter(lastFilter, withCompletionHandler: { (image, error) -> Void in
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        })
+    }
+    
+    @IBAction func savePrevPicture() {
+        videoCamera.capturePhotoAsImageProcessedUpToFilter(prevFilter, withCompletionHandler: { (image, error) -> Void in
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         })
     }
