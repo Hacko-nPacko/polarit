@@ -11,16 +11,18 @@ import UIKit
 class ViewController: UIViewController {
     
     let videoCamera:GPUImageStillCamera
-    var lastFilter:GPUImageFilter!
+    let lastFilter:GPUImageFilter
     @IBOutlet var gpuImageView:GPUImageView
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
+        lastFilter = PolarFilter()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     init(coder aDecoder: NSCoder!) {
         videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
+        lastFilter = PolarFilter()
         super.init(coder: aDecoder)
     }
     
@@ -28,12 +30,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         videoCamera.outputImageOrientation = .Portrait
-        
+        gpuImageView.setInputRotation(kGPUImageNoRotation, atIndex: 0)
+
         let mirrorFilter = GPUImageTransformFilter()
         mirrorFilter.affineTransform = CGAffineTransformMakeRotation(CGFloat(M_PI))
         videoCamera.addTarget(mirrorFilter)
         
-        let scaleFilter = GPUImageTransformFilter() //
+        let scaleFilter = GPUImageTransformFilter()
         scaleFilter.affineTransform = CGAffineTransformMakeScale(1, 720/1280)
         mirrorFilter.addTarget(scaleFilter)
                 
@@ -41,14 +44,19 @@ class ViewController: UIViewController {
         let cropFilter = GPUImageCropFilter(cropRegion: CGRectMake(0, (1280-720)/2/1280, 1, 720/1280))
         scaleFilter.addTarget(cropFilter)
         
-        let polarFilter = PolarFilter()
-        cropFilter.addTarget(polarFilter)
-        polarFilter.addTarget(gpuImageView)
-        videoCamera.startCameraCapture()
+        cropFilter.addTarget(lastFilter)
+        lastFilter.addTarget(gpuImageView)
         
-        lastFilter = polarFilter
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        videoCamera.startCameraCapture()
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        videoCamera.stopCameraCapture()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -58,6 +66,8 @@ class ViewController: UIViewController {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         })
     }
+    
+    
 
 }
 
