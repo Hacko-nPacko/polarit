@@ -25,7 +25,7 @@ NSString *const kFragmentShader = SHADER_STRING
 (
  varying highp vec2 textureCoordinate;
  uniform sampler2D inputImageTexture;
- const highp float PI = 3.14159265358979323846264;
+ const highp float PI = 3.1415926535897932384626433832795;
  const highp vec2 center = vec2(0.5);
 
  void main() {

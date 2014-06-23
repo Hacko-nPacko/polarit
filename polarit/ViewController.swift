@@ -12,7 +12,6 @@ class ViewController: UIViewController {
     
     let videoCamera:GPUImageStillCamera
     var lastFilter:GPUImageFilter!
-    var prevFilter:GPUImageFilter!
     @IBOutlet var gpuImageView:GPUImageView
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
@@ -47,7 +46,6 @@ class ViewController: UIViewController {
         polarFilter.addTarget(gpuImageView)
         videoCamera.startCameraCapture()
         
-        prevFilter = cropFilter
         lastFilter = polarFilter
     }
 
@@ -55,20 +53,11 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func shouldAutorotate() -> Bool {
-        return false
-    }
-    
     @IBAction func savePicture() {
         videoCamera.capturePhotoAsImageProcessedUpToFilter(lastFilter, withCompletionHandler: { (image, error) -> Void in
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         })
     }
-    
-    @IBAction func savePrevPicture() {
-        videoCamera.capturePhotoAsImageProcessedUpToFilter(prevFilter, withCompletionHandler: { (image, error) -> Void in
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        })
-    }
+
 }
 
