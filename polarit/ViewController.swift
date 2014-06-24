@@ -11,8 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     
     let videoCamera:GPUImageStillCamera
-    let lastFilter:GPUImageFilter
+    let lastFilter:PolarFilter
     @IBOutlet var gpuImageView:GPUImageView
+    @IBOutlet var angleSlider:ASValueTrackingSlider
+    @IBOutlet var effectSlider:ASValueTrackingSlider
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
@@ -47,6 +49,9 @@ class ViewController: UIViewController {
         cropFilter.addTarget(lastFilter)
         lastFilter.addTarget(gpuImageView)
         
+        angleSlider.setMaxFractionDigitsDisplayed(0)
+
+        //angleSlider.dataSource = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -67,7 +72,16 @@ class ViewController: UIViewController {
         })
     }
     
+    @IBAction func angleChanged(sender:UISlider) {
+        lastFilter.angle = (sender.value / 2) / 180 / CGFloat(M_PI)
+        NSLog("%f", lastFilter.angle);
+        
+    }
     
-
+    @IBAction func effectChanged(sender:UISlider) {
+        NSLog("%f", lastFilter.angle);
+        
+    }
+    
 }
 

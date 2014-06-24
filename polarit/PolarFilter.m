@@ -35,7 +35,7 @@ NSString *const kFragmentShader = SHADER_STRING
      if (pow(abs(calcPoint.x), 2.0) + pow(abs(calcPoint.y), 2.0) <= pow(0.5, 2.0)) {
          highp float rad = length(calcPoint) * 2.0;
          highp float thita = ((atan(calcPoint.y, calcPoint.x)/ PI) + 1.0) / 2.0;
-         highp vec2 polar = vec2(thita, rad);
+         highp vec2 polar = vec2(rad, thita);
          color = texture2D(inputImageTexture, polar);
      } else {
          color = vec4(0.0);
@@ -46,11 +46,15 @@ NSString *const kFragmentShader = SHADER_STRING
 
 
 @implementation PolarFilter
+
+@synthesize angle;
+
 - (id)init {
     if (!(self = [super initWithVertexShaderFromString:kVertexShader fragmentShaderFromString:kFragmentShader])) {
         return nil;
     }
     return self;
 }
+
 
 @end

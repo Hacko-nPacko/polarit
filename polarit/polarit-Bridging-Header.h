@@ -8,5 +8,6 @@
 
 
 #import <GPUImage/GPUImage.h>
+#import <ASValueTrackingSlider/ASValueTrackingSlider.h>
 #import <OpenGLES/gltypes.h>
 #import "PolarFilter.h"

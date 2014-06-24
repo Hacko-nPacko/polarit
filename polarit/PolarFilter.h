@@ -8,6 +8,9 @@
 
 #import <GPUImage/GPUImage.h>
 
-@interface PolarFilter : GPUImageFilter 
+@interface PolarFilter : GPUImageFilter
+
+    @property float angle;
+
 
 @end

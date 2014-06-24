@@ -12,7 +12,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleAspectFill" id="8bC-Xf-vdC" customClass="GPUImageView">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GPUImageView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -25,15 +25,32 @@
                                     <action selector="savePicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Y6-og-X7a"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-180" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-g4-Sdj" customClass="ASValueTrackingSlider">
+                                <rect key="frame" x="13" y="120" width="454" height="31"/>
+                                <connections>
+                                    <action selector="angleChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="v9y-WR-LYC"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="acN-Kn-wsD" customClass="ASValueTrackingSlider">
+                                <rect key="frame" x="13" y="200" width="454" height="31"/>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="acN-Kn-wsD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="CDd-Ey-Ynt"/>
+                            <constraint firstItem="g0c-g4-Sdj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="KQd-x8-4KH"/>
+                            <constraint firstItem="g0c-g4-Sdj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="Ndd-Kf-RFQ"/>
+                            <constraint firstAttribute="trailing" secondItem="acN-Kn-wsD" secondAttribute="trailing" constant="15" id="bEJ-D0-8VX"/>
+                            <constraint firstAttribute="trailing" secondItem="g0c-g4-Sdj" secondAttribute="trailing" constant="15" id="hfP-NO-fhM"/>
                             <constraint firstItem="4hp-rV-gu8" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="kcy-Pv-1EN"/>
+                            <constraint firstItem="acN-Kn-wsD" firstAttribute="top" secondItem="g0c-g4-Sdj" secondAttribute="bottom" constant="50" id="tPn-yJ-DW1"/>
                             <constraint firstAttribute="centerX" secondItem="4hp-rV-gu8" secondAttribute="centerX" id="yuT-pV-NTx"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
+                        <outlet property="angleSlider" destination="g0c-g4-Sdj" id="htN-69-LcL"/>
+                        <outlet property="effectSlider" destination="acN-Kn-wsD" id="m60-zL-vlD"/>
                         <outlet property="gpuImageView" destination="8bC-Xf-vdC" id="qO5-GY-DEv"/>
                     </connections>
                 </viewController>
