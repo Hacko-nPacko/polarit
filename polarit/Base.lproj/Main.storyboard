@@ -35,12 +35,6 @@
                                     <action selector="angleChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="v9y-WR-LYC"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="acN-Kn-wsD" customClass="ASValueTrackingSlider">
-                                <rect key="frame" x="13" y="150" width="454" height="31"/>
-                                <connections>
-                                    <action selector="effectChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="fuz-6h-Fkh"/>
-                                </connections>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1Q-BK-ODc">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="pano.png">
@@ -48,21 +42,28 @@
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact"/>
                                 <connections>
-                                    <action selector="pickPanoramaFromLibrary" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJm-ka-cic"/>
+                                    <action selector="pickPanoramaFromLibrary" destination="BYZ-38-t0r" eventType="touchUpInside" id="JJh-KS-3UI"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="acN-Kn-wsD" customClass="ASValueTrackingSlider">
+                                <rect key="frame" x="13" y="150" width="454" height="31"/>
+                                <connections>
+                                    <action selector="effectChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="fuz-6h-Fkh"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="acN-Kn-wsD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="CDd-Ey-Ynt"/>
-                            <constraint firstItem="g0c-g4-Sdj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="KQd-x8-4KH"/>
-                            <constraint firstItem="g0c-g4-Sdj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="Ndd-Kf-RFQ"/>
+                            <constraint firstItem="acN-Kn-wsD" firstAttribute="leading" secondItem="g0c-g4-Sdj" secondAttribute="trailing" constant="15" id="Bbh-gY-g2o"/>
+                            <constraint firstItem="acN-Kn-wsD" firstAttribute="height" secondItem="g0c-g4-Sdj" secondAttribute="height" id="FWT-rv-J6K"/>
+                            <constraint firstAttribute="trailing" secondItem="acN-Kn-wsD" secondAttribute="trailing" constant="15" id="JwV-bl-SDp"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="G1Q-BK-ODc" secondAttribute="bottom" id="Xfm-Bq-oKI"/>
-                            <constraint firstAttribute="trailing" secondItem="acN-Kn-wsD" secondAttribute="trailing" constant="15" id="bEJ-D0-8VX"/>
-                            <constraint firstAttribute="trailing" secondItem="g0c-g4-Sdj" secondAttribute="trailing" constant="15" id="hfP-NO-fhM"/>
+                            <constraint firstItem="g0c-g4-Sdj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="i62-M5-me0"/>
                             <constraint firstAttribute="trailing" secondItem="G1Q-BK-ODc" secondAttribute="trailing" constant="15" id="iXt-3C-AaQ"/>
                             <constraint firstItem="4hp-rV-gu8" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="kcy-Pv-1EN"/>
-                            <constraint firstItem="acN-Kn-wsD" firstAttribute="top" secondItem="g0c-g4-Sdj" secondAttribute="bottom" constant="50" id="tPn-yJ-DW1"/>
+                            <constraint firstItem="acN-Kn-wsD" firstAttribute="width" secondItem="g0c-g4-Sdj" secondAttribute="width" id="qMB-1Y-Jxl"/>
+                            <constraint firstItem="g0c-g4-Sdj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="uZN-UZ-TD2"/>
+                            <constraint firstItem="acN-Kn-wsD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="v7d-Ox-EgO"/>
                             <constraint firstAttribute="centerX" secondItem="4hp-rV-gu8" secondAttribute="centerX" id="yuT-pV-NTx"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -71,19 +72,33 @@
                                 <exclude reference="G1Q-BK-ODc"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="i62-M5-me0"/>
+                                <exclude reference="uZN-UZ-TD2"/>
+                                <exclude reference="Bbh-gY-g2o"/>
+                                <exclude reference="FWT-rv-J6K"/>
+                                <exclude reference="JwV-bl-SDp"/>
+                                <exclude reference="qMB-1Y-Jxl"/>
+                                <exclude reference="v7d-Ox-EgO"/>
                                 <exclude reference="Xfm-Bq-oKI"/>
                                 <exclude reference="iXt-3C-AaQ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="Xfm-Bq-oKI"/>
-                                <include reference="iXt-3C-AaQ"/>
+                            <mask key="subviews">
+                                <include reference="G1Q-BK-ODc"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="G1Q-BK-ODc"/>
+                            <mask key="constraints">
+                                <include reference="i62-M5-me0"/>
+                                <include reference="uZN-UZ-TD2"/>
+                                <include reference="Bbh-gY-g2o"/>
+                                <include reference="FWT-rv-J6K"/>
+                                <include reference="JwV-bl-SDp"/>
+                                <include reference="qMB-1Y-Jxl"/>
+                                <include reference="v7d-Ox-EgO"/>
+                                <include reference="Xfm-Bq-oKI"/>
+                                <include reference="iXt-3C-AaQ"/>
                             </mask>
                         </variation>
                     </view>

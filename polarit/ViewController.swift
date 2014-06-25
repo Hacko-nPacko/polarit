@@ -44,6 +44,7 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         
         // GPUImageAmatorkaFilter
         // GPUImageMissEtikateFilter
+       
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -89,18 +90,18 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
     }
 
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
-        if (image != nil) {
-            let size = image.size
-            let gpuImage = GPUImagePicture(image: image)
-            let filters = buildFilters(gpuImage, target: nil, originalSize: size)
-            filters.lastFilter.useNextFrameForImageCapture()
-            gpuImage.processImage()
-            let polarImage = filters.lastFilter.imageFromCurrentFramebuffer()
-            UIImageWriteToSavedPhotosAlbum(polarImage, nil, nil, nil)
-        }
-        
         self.dismissViewControllerAnimated(true, completion: {() -> Void in
+            if (image != nil) {
+                let size = image.size
+                let gpuImage = GPUImagePicture(image: image)
+                let filters = self.buildFilters(gpuImage, target: nil, originalSize: size)
+                filters.lastFilter.useNextFrameForImageCapture()
+                gpuImage.processImage()
+                let polarImage = filters.lastFilter.imageFromCurrentFramebuffer()
+                UIImageWriteToSavedPhotosAlbum(polarImage, nil, nil, nil)
+            }
             self.videoCamera.startCameraCapture()
+
         })
     }
 
