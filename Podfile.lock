@@ -1,13 +1,16 @@
 PODS:
   - ASValueTrackingSlider (0.9.3)
+  - AwesomeMenu (1.0.0)
   - GPUImage (0.1.4)
 
 DEPENDENCIES:
-  - ASValueTrackingSlider (~> 0.9.3)
+  - ASValueTrackingSlider
+  - AwesomeMenu
   - GPUImage (~> 0.1.4)
 
 SPEC CHECKSUMS:
   ASValueTrackingSlider: e83d12c6ec9b179608272b7f69db2621c45cce1b
+  AwesomeMenu: e151e84da2434b7deb8acd118816a1f5d8794608
   GPUImage: ac2bde5f4dbea02a81ced6313964cec1f2043ca9
 
 COCOAPODS: 0.33.1

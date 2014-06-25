@@ -10,7 +10,4 @@
 
 @interface PolarFilter : GPUImageFilter
 
-    @property float angle;
-
-
 @end

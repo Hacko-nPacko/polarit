@@ -17,7 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hp-rV-gu8">
-                                <rect key="frame" x="176" y="352" width="128" height="128"/>
+                                <rect key="frame" x="158" y="352" width="164" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="3b4-vx-tvF"/>
+                                    <constraint firstAttribute="width" constant="164" id="fjV-on-EuR"/>
+                                </constraints>
                                 <state key="normal" image="camera-128.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -26,27 +30,62 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-180" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-g4-Sdj" customClass="ASValueTrackingSlider">
-                                <rect key="frame" x="13" y="120" width="454" height="31"/>
+                                <rect key="frame" x="13" y="70" width="454" height="31"/>
                                 <connections>
                                     <action selector="angleChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="v9y-WR-LYC"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="acN-Kn-wsD" customClass="ASValueTrackingSlider">
-                                <rect key="frame" x="13" y="200" width="454" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="acN-Kn-wsD" customClass="ASValueTrackingSlider">
+                                <rect key="frame" x="13" y="150" width="454" height="31"/>
+                                <connections>
+                                    <action selector="effectChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="fuz-6h-Fkh"/>
+                                </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1Q-BK-ODc">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="pano.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact"/>
+                                <connections>
+                                    <action selector="pickPanoramaFromLibrary" destination="BYZ-38-t0r" eventType="touchUpInside" id="mJm-ka-cic"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="acN-Kn-wsD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="CDd-Ey-Ynt"/>
                             <constraint firstItem="g0c-g4-Sdj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="KQd-x8-4KH"/>
-                            <constraint firstItem="g0c-g4-Sdj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="Ndd-Kf-RFQ"/>
+                            <constraint firstItem="g0c-g4-Sdj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="Ndd-Kf-RFQ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="G1Q-BK-ODc" secondAttribute="bottom" id="Xfm-Bq-oKI"/>
                             <constraint firstAttribute="trailing" secondItem="acN-Kn-wsD" secondAttribute="trailing" constant="15" id="bEJ-D0-8VX"/>
                             <constraint firstAttribute="trailing" secondItem="g0c-g4-Sdj" secondAttribute="trailing" constant="15" id="hfP-NO-fhM"/>
+                            <constraint firstAttribute="trailing" secondItem="G1Q-BK-ODc" secondAttribute="trailing" constant="15" id="iXt-3C-AaQ"/>
                             <constraint firstItem="4hp-rV-gu8" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="kcy-Pv-1EN"/>
                             <constraint firstItem="acN-Kn-wsD" firstAttribute="top" secondItem="g0c-g4-Sdj" secondAttribute="bottom" constant="50" id="tPn-yJ-DW1"/>
                             <constraint firstAttribute="centerX" secondItem="4hp-rV-gu8" secondAttribute="centerX" id="yuT-pV-NTx"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="G1Q-BK-ODc"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Xfm-Bq-oKI"/>
+                                <exclude reference="iXt-3C-AaQ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Xfm-Bq-oKI"/>
+                                <include reference="iXt-3C-AaQ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="G1Q-BK-ODc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="angleSlider" destination="g0c-g4-Sdj" id="htN-69-LcL"/>
@@ -56,10 +95,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127" y="196"/>
+            <point key="canvasLocation" x="126" y="195.75"/>
         </scene>
     </scenes>
     <resources>
         <image name="camera-128.png" width="128" height="128"/>
+        <image name="pano.png" width="64" height="34"/>
     </resources>
 </document>

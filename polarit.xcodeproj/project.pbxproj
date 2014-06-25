@@ -16,8 +16,11 @@
 		F946795D1953037F00895D21 /* polaritTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946795C1953037F00895D21 /* polaritTests.swift */; };
 		F94AE9C119559269000E6F4D /* camera-128.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9BF19559269000E6F4D /* camera-128.png */; };
 		F94AE9C219559269000E6F4D /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9C019559269000E6F4D /* camera.png */; };
-		F94AE9C6195592D2000E6F4D /* camera-back-128.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9C5195592D2000E6F4D /* camera-back-128.png */; };
 		F94AE9C9195596A7000E6F4D /* launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9C8195596A7000E6F4D /* launch@2x.png */; };
+		F95A19C3195A2A3B003B0E45 /* lookup_amatorka.png in Resources */ = {isa = PBXBuildFile; fileRef = F95A19C2195A2A3B003B0E45 /* lookup_amatorka.png */; };
+		F95A19CB195A344B003B0E45 /* lookup_miss_etikate.png in Resources */ = {isa = PBXBuildFile; fileRef = F95A19CA195A344B003B0E45 /* lookup_miss_etikate.png */; };
+		F9CE1D45195AC5C3001DD788 /* pano.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CE1D44195AC5C3001DD788 /* pano.png */; };
+		F9CE1D47195ACC10001DD788 /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CE1D46195ACC10001DD788 /* filter.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +50,11 @@
 		F946795C1953037F00895D21 /* polaritTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = polaritTests.swift; sourceTree = "<group>"; };
 		F94AE9BF19559269000E6F4D /* camera-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-128.png"; sourceTree = "<group>"; };
 		F94AE9C019559269000E6F4D /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
-		F94AE9C5195592D2000E6F4D /* camera-back-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-back-128.png"; sourceTree = "<group>"; };
 		F94AE9C8195596A7000E6F4D /* launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch@2x.png"; sourceTree = "<group>"; };
+		F95A19C2195A2A3B003B0E45 /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_amatorka.png; sourceTree = "<group>"; };
+		F95A19CA195A344B003B0E45 /* lookup_miss_etikate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_miss_etikate.png; sourceTree = "<group>"; };
+		F9CE1D44195AC5C3001DD788 /* pano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pano.png; sourceTree = "<group>"; };
+		F9CE1D46195ACC10001DD788 /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		F9DD26BD195314A900298B9E /* polarit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "polarit-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,8 +168,11 @@
 			children = (
 				F94AE9C7195596A7000E6F4D /* launch */,
 				F94AE9BF19559269000E6F4D /* camera-128.png */,
-				F94AE9C5195592D2000E6F4D /* camera-back-128.png */,
 				F94AE9C019559269000E6F4D /* camera.png */,
+				F95A19C2195A2A3B003B0E45 /* lookup_amatorka.png */,
+				F95A19CA195A344B003B0E45 /* lookup_miss_etikate.png */,
+				F9CE1D44195AC5C3001DD788 /* pano.png */,
+				F9CE1D46195ACC10001DD788 /* filter.png */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -256,12 +265,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F94AE9C6195592D2000E6F4D /* camera-back-128.png in Resources */,
+				F95A19C3195A2A3B003B0E45 /* lookup_amatorka.png in Resources */,
+				F9CE1D45195AC5C3001DD788 /* pano.png in Resources */,
 				F94AE9C219559269000E6F4D /* camera.png in Resources */,
 				F946794F1953037E00895D21 /* Main.storyboard in Resources */,
+				F9CE1D47195ACC10001DD788 /* filter.png in Resources */,
 				F94AE9C9195596A7000E6F4D /* launch@2x.png in Resources */,
 				F94AE9C119559269000E6F4D /* camera-128.png in Resources */,
 				F94679511953037E00895D21 /* Images.xcassets in Resources */,
+				F95A19CB195A344B003B0E45 /* lookup_miss_etikate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
