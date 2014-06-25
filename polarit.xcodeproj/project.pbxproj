@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		5572F3B7B33649C9B6A0F93E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1C2D19C3EE4B50B99D39AC /* libPods.a */; };
 		F91E19CA1953793200BD9643 /* PolarFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = F91E19C91953793200BD9643 /* PolarFilter.m */; };
+		F91E821E195B7A8800F7E606 /* indicator-background-large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91E821A195B7A8800F7E606 /* indicator-background-large@2x.png */; };
+		F91E821F195B7A8800F7E606 /* indicator-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91E821B195B7A8800F7E606 /* indicator-background@2x.png */; };
+		F91E8220195B7A8800F7E606 /* indicator-spinner-large@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91E821C195B7A8800F7E606 /* indicator-spinner-large@2x.png */; };
+		F91E8221195B7A8800F7E606 /* indicator-spinner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F91E821D195B7A8800F7E606 /* indicator-spinner@2x.png */; };
+		F91E8224195B7CAB00F7E606 /* AngleSliderDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91E8223195B7CAB00F7E606 /* AngleSliderDataSource.swift */; };
+		F91E8226195B7D9B00F7E606 /* UIConfigurer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91E8225195B7D9B00F7E606 /* UIConfigurer.swift */; };
 		F946794A1953037E00895D21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94679491953037E00895D21 /* AppDelegate.swift */; };
 		F946794C1953037E00895D21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946794B1953037E00895D21 /* ViewController.swift */; };
 		F946794F1953037E00895D21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F946794D1953037E00895D21 /* Main.storyboard */; };
@@ -19,7 +25,6 @@
 		F94AE9C9195596A7000E6F4D /* launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9C8195596A7000E6F4D /* launch@2x.png */; };
 		F95A19C3195A2A3B003B0E45 /* lookup_amatorka.png in Resources */ = {isa = PBXBuildFile; fileRef = F95A19C2195A2A3B003B0E45 /* lookup_amatorka.png */; };
 		F95A19CB195A344B003B0E45 /* lookup_miss_etikate.png in Resources */ = {isa = PBXBuildFile; fileRef = F95A19CA195A344B003B0E45 /* lookup_miss_etikate.png */; };
-		F96A528C195B45C700B6B1E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96A528B195B45C700B6B1E2 /* QuartzCore.framework */; };
 		F9CE1D45195AC5C3001DD788 /* pano.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CE1D44195AC5C3001DD788 /* pano.png */; };
 		F9CE1D47195ACC10001DD788 /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CE1D46195ACC10001DD788 /* filter.png */; };
 /* End PBXBuildFile section */
@@ -40,6 +45,12 @@
 		F91E19B619533AFC00BD9643 /* polarit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = polarit.entitlements; sourceTree = "<group>"; };
 		F91E19C81953792000BD9643 /* PolarFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PolarFilter.h; sourceTree = "<group>"; };
 		F91E19C91953793200BD9643 /* PolarFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PolarFilter.m; sourceTree = "<group>"; };
+		F91E821A195B7A8800F7E606 /* indicator-background-large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indicator-background-large@2x.png"; sourceTree = "<group>"; };
+		F91E821B195B7A8800F7E606 /* indicator-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indicator-background@2x.png"; sourceTree = "<group>"; };
+		F91E821C195B7A8800F7E606 /* indicator-spinner-large@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indicator-spinner-large@2x.png"; sourceTree = "<group>"; };
+		F91E821D195B7A8800F7E606 /* indicator-spinner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "indicator-spinner@2x.png"; sourceTree = "<group>"; };
+		F91E8223195B7CAB00F7E606 /* AngleSliderDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleSliderDataSource.swift; sourceTree = "<group>"; };
+		F91E8225195B7D9B00F7E606 /* UIConfigurer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConfigurer.swift; sourceTree = "<group>"; };
 		F94679441953037E00895D21 /* polarit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = polarit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F94679481953037E00895D21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F94679491953037E00895D21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +76,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F96A528C195B45C700B6B1E2 /* QuartzCore.framework in Frameworks */,
 				5572F3B7B33649C9B6A0F93E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +108,26 @@
 			name = objc;
 			sourceTree = "<group>";
 		};
+		F91E8211195B7A4E00F7E606 /* indicator */ = {
+			isa = PBXGroup;
+			children = (
+				F91E821A195B7A8800F7E606 /* indicator-background-large@2x.png */,
+				F91E821B195B7A8800F7E606 /* indicator-background@2x.png */,
+				F91E821C195B7A8800F7E606 /* indicator-spinner-large@2x.png */,
+				F91E821D195B7A8800F7E606 /* indicator-spinner@2x.png */,
+			);
+			path = indicator;
+			sourceTree = "<group>";
+		};
+		F91E8222195B7C6E00F7E606 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F91E8223195B7CAB00F7E606 /* AngleSliderDataSource.swift */,
+				F91E8225195B7D9B00F7E606 /* UIConfigurer.swift */,
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
 		F946793B1953037E00895D21 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +151,7 @@
 		F94679461953037E00895D21 /* polarit */ = {
 			isa = PBXGroup;
 			children = (
+				F91E8222195B7C6E00F7E606 /* helpers */,
 				F91E19B619533AFC00BD9643 /* polarit.entitlements */,
 				F94679491953037E00895D21 /* AppDelegate.swift */,
 				F946794B1953037E00895D21 /* ViewController.swift */,
@@ -170,6 +201,7 @@
 		F9630CFE19548483001A0D13 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F91E8211195B7A4E00F7E606 /* indicator */,
 				F94AE9C7195596A7000E6F4D /* launch */,
 				F94AE9BF19559269000E6F4D /* camera-128.png */,
 				F94AE9C019559269000E6F4D /* camera.png */,
@@ -269,14 +301,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F91E821E195B7A8800F7E606 /* indicator-background-large@2x.png in Resources */,
 				F95A19C3195A2A3B003B0E45 /* lookup_amatorka.png in Resources */,
 				F9CE1D45195AC5C3001DD788 /* pano.png in Resources */,
 				F94AE9C219559269000E6F4D /* camera.png in Resources */,
+				F91E8221195B7A8800F7E606 /* indicator-spinner@2x.png in Resources */,
+				F91E8220195B7A8800F7E606 /* indicator-spinner-large@2x.png in Resources */,
 				F946794F1953037E00895D21 /* Main.storyboard in Resources */,
 				F9CE1D47195ACC10001DD788 /* filter.png in Resources */,
 				F94AE9C9195596A7000E6F4D /* launch@2x.png in Resources */,
 				F94AE9C119559269000E6F4D /* camera-128.png in Resources */,
 				F94679511953037E00895D21 /* Images.xcassets in Resources */,
+				F91E821F195B7A8800F7E606 /* indicator-background@2x.png in Resources */,
 				F95A19CB195A344B003B0E45 /* lookup_miss_etikate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,7 +366,9 @@
 			files = (
 				F91E19CA1953793200BD9643 /* PolarFilter.m in Sources */,
 				F946794C1953037E00895D21 /* ViewController.swift in Sources */,
+				F91E8226195B7D9B00F7E606 /* UIConfigurer.swift in Sources */,
 				F946794A1953037E00895D21 /* AppDelegate.swift in Sources */,
+				F91E8224195B7CAB00F7E606 /* AngleSliderDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

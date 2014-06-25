@@ -1,4 +1,4 @@
 platform :ios, '7.0'
-pod 'GPUImage', '~> 0.1.4'
+pod 'GPUImage'
 pod 'ASValueTrackingSlider'
-pod "BounceMenuController"
+pod 'TYMActivityIndicatorView'

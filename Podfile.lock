@@ -2,15 +2,18 @@ PODS:
   - ASValueTrackingSlider (0.9.3)
   - BounceMenuController (0.1.0)
   - GPUImage (0.1.4)
+  - TYMActivityIndicatorView (0.2.0)
 
 DEPENDENCIES:
   - ASValueTrackingSlider
   - BounceMenuController
-  - GPUImage (~> 0.1.4)
+  - GPUImage
+  - TYMActivityIndicatorView
 
 SPEC CHECKSUMS:
   ASValueTrackingSlider: e83d12c6ec9b179608272b7f69db2621c45cce1b
   BounceMenuController: 25e3f908456e58a7d0b3e5ceb8b35817ef8bb8a4
   GPUImage: ac2bde5f4dbea02a81ced6313964cec1f2043ca9
+  TYMActivityIndicatorView: b65789b48feca6f6d546831d8ae5ad62acd58403
 
 COCOAPODS: 0.33.1

@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let videoCamera:GPUImageStillCamera
     
-    var customFilterClass:GPUImageFilter.Type?
+    var customFilterClass:GPUImageFilterGroup.Type?
     var polarFilter:PolarFilter!
     var sepiaFilter:GPUImageSepiaFilter!
     var rotateFilter:GPUImageTransformFilter!
@@ -21,6 +21,7 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
     @IBOutlet var gpuImageView:GPUImageView
     @IBOutlet var angleSlider:ASValueTrackingSlider
     @IBOutlet var sepiaSlider:ASValueTrackingSlider
+    @IBOutlet var indicator:TYMActivityIndicatorView
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
@@ -36,24 +37,23 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         super.viewDidLoad()
         
         videoCamera.outputImageOrientation = .Portrait
-        gpuImageView.setInputRotation(kGPUImageNoRotation, atIndex: 0)
+        videoCamera.startCameraCapture()
 
-        (lastFilter, sepiaFilter, rotateFilter, polarFilter) = buildFilters(videoCamera, target: gpuImageView, originalSize: CGSizeMake(720, 1280))
+        gpuImageView.setInputRotation(kGPUImageNoRotation, atIndex: 0)
+        //customFilterClass = GPUImageMissEtikateFilter.self
+        //customFilterClass = GPUImageAmatorkaFilter.self
+        
+        (lastFilter, sepiaFilter, rotateFilter, polarFilter) = buildFilters(source: videoCamera, target: gpuImageView, originalSize: CGSizeMake(720, 1280), sepia: 0, angle: 0)
         
         angleSlider.setMaxFractionDigitsDisplayed(0)
-        angleSlider.dataSource = self
+        angleSlider.dataSource = AngleSliderDataSource()
         
-        // GPUImageAmatorkaFilter
-        // GPUImageMissEtikateFilter
+        configureIndicator(indicator)
+    }
 
-        
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        videoCamera.startCameraCapture()
-    }
 
     override func viewWillDisappear(animated: Bool) {
+        NSLog("view did disappear")
         videoCamera.stopCameraCapture()
     }
     
@@ -62,9 +62,11 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
     }
     
     @IBAction func savePicture() {
+        indicator.startAnimating()
         videoCamera.capturePhotoAsImageProcessedUpToFilter(lastFilter, withCompletionHandler: { (image, error) -> Void in
             NSLog("saving %@", image)
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            self.indicator.stopAnimating()
         })
     }
     
@@ -76,15 +78,7 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         sepiaFilter.intensity = sender.value
     }
     
-    func slider(slider: ASValueTrackingSlider!, stringForValue value: CFloat) -> String! {
-        if (slider == angleSlider) {
-            return NSString(format:"%@°", slider.numberFormatter.stringFromNumber(value))
-        }
-        return slider.numberFormatter.stringFromNumber(value)
-    }
-    
     @IBAction func pickPanoramaFromLibrary() {
-        videoCamera.stopCameraCapture()
         let photoPicker = UIImagePickerController()
         photoPicker.sourceType = .PhotoLibrary
         photoPicker.delegate = self
@@ -92,7 +86,7 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
     }
 
     @IBAction func pickAdditionalFilter() {
-        UIView.animateWithDuration(0.1, animations: {() -> Void in
+        UIView.animateWithDuration(0.2, animations: {() -> Void in
             var dx:Float
             if (self.view.frame.origin.x > 0) {
                 dx = -50
@@ -101,22 +95,35 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
             }
             self.view.frame.offset(dx: dx, dy: 0)
         })
+        // TODO
     }
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
+        indicator.startAnimating()
         self.dismissViewControllerAnimated(true, completion: {() -> Void in
             if (image != nil) {
-                let gpuImage = GPUImagePicture(image: image)
-                let filters = self.buildFilters(gpuImage, target: nil, originalSize: image.size)
-                filters.lastFilter.useNextFrameForImageCapture()
-                gpuImage.processImage()
-                let polarImage = filters.lastFilter.imageFromCurrentFramebuffer()
-                UIImageWriteToSavedPhotosAlbum(polarImage, nil, nil, nil)
+                let polarImageView = processImage(image: image, frame: self.view.frame, sepia: self.sepiaSlider.value, angle: self.angleSlider.value)
+                self.view.addSubview(polarImageView)
+                UIView.animateWithDuration(0.5, delay: 0, options: .TransitionCrossDissolve, animations: {() -> Void in
+                    polarImageView.alpha = 1
+                }, completion: {(success:Bool) -> Void in
+                })
+                
+                UIView.animateWithDuration(0.5, delay: 4.5, options: .TransitionCrossDissolve, animations: {() -> Void in
+                    polarImageView.alpha = 0
+                    
+                }, completion: {(success:Bool) -> Void in
+                    self.videoCamera.startCameraCapture()
+                    self.indicator.stopAnimating()
+                    polarImageView.removeFromSuperview()
+                    
+                })
+                
+                
             }
-            self.videoCamera.startCameraCapture()
-
         })
     }
+    
 
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
@@ -125,52 +132,7 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         })
     }
     
-    func buildFilters(source:GPUImageOutput, target:GPUImageInput?, originalSize size:CGSize) -> (lastFilter:GPUImageFilter!, effectFilter:GPUImageSepiaFilter!, rotateFilter:GPUImageTransformFilter!, polarFilter:PolarFilter!) {
-        var scale:CGAffineTransform
-        var crop: CGRect
-        if (size.height < size.width) {
-            scale = CGAffineTransformMakeScale(size.height/size.width, 1)
-            crop = CGRectMake((size.width - size.height)/2/size.width, 0, size.height/size.width, 1)
-        } else {
-            scale = CGAffineTransformMakeScale(1, size.width/size.height)
-            crop = CGRectMake(0, (size.height - size.width)/2/size.height, 1, size.width/size.height)
-        }
-
-        let mirrorFilter = GPUImageTransformFilter()
-        mirrorFilter.affineTransform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        
-        let scaleFilter = GPUImageTransformFilter()
-        scaleFilter.affineTransform = scale
-        
-        let cropFilter = GPUImageCropFilter(cropRegion: crop)
-        
-        let sepiaFilter = GPUImageSepiaFilter()
-        sepiaFilter.intensity = sepiaSlider.value
-        
-        let rotateFilter = GPUImageTransformFilter()
-        rotateFilter.affineTransform = CGAffineTransformMakeRotation(angleSlider.value / 180 * CGFloat(M_PI))
-        
-        let polarFilter = PolarFilter()
-        
-        source.addTarget(mirrorFilter)
-        
-        if let customFilter:GPUImageFilter = customFilterClass?() {            
-            mirrorFilter.addTarget(customFilter)
-            customFilter.addTarget(scaleFilter)
-        } else {
-            mirrorFilter.addTarget(scaleFilter)
-        }
-        scaleFilter.addTarget(cropFilter)
-        cropFilter.addTarget(sepiaFilter)
-        sepiaFilter.addTarget(polarFilter)
-        polarFilter.addTarget(rotateFilter)
-        
-        if let gpuTarget = target {
-            rotateFilter.addTarget(gpuTarget)
-        }
-        
-        return (rotateFilter, sepiaFilter, rotateFilter, polarFilter)
-    }
+    
     
    
 }

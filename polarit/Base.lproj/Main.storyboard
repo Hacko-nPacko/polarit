@@ -28,7 +28,7 @@
                                     <action selector="sepiaChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eiL-Kx-oqQ"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hp-rV-gu8">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hp-rV-gu8">
                                 <rect key="frame" x="158" y="352" width="164" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="3b4-vx-tvF">
@@ -101,11 +101,17 @@
                                         <include reference="URz-c1-PSq"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact"/>
                                 <connections>
-                                    <action selector="pickPanoramaFromLibrary" destination="BYZ-38-t0r" eventType="touchUpInside" id="JJh-KS-3UI"/>
+                                    <action selector="pickPanoramaFromLibrary" destination="BYZ-38-t0r" eventType="touchUpInside" id="a0L-23-iFh"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUb-Td-C1O" customClass="TYMActivityIndicatorView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.99215686274509807" green="0.58039215686274503" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -125,11 +131,9 @@
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="JQZ-ua-qCj"/>
-                                <exclude reference="G1Q-BK-ODc"/>
-                            </mask>
                             <mask key="constraints">
+                                <exclude reference="UPr-4x-s4u"/>
+                                <exclude reference="pZH-Sw-M5U"/>
                                 <exclude reference="i62-M5-me0"/>
                                 <exclude reference="uZN-UZ-TD2"/>
                                 <exclude reference="Bbh-gY-g2o"/>
@@ -138,21 +142,15 @@
                                 <exclude reference="qMB-1Y-Jxl"/>
                                 <exclude reference="v7d-Ox-EgO"/>
                                 <exclude reference="vf6-fX-EWp"/>
-                                <exclude reference="pZH-Sw-M5U"/>
-                                <exclude reference="UPr-4x-s4u"/>
                                 <exclude reference="KxN-Z5-LuG"/>
                                 <exclude reference="QBN-O9-8Kr"/>
                                 <exclude reference="mAG-FY-aCP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="JQZ-ua-qCj"/>
-                                <include reference="G1Q-BK-ODc"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
+                                <include reference="UPr-4x-s4u"/>
+                                <include reference="pZH-Sw-M5U"/>
                                 <include reference="i62-M5-me0"/>
                                 <include reference="uZN-UZ-TD2"/>
                                 <include reference="Bbh-gY-g2o"/>
@@ -161,17 +159,17 @@
                                 <include reference="qMB-1Y-Jxl"/>
                                 <include reference="v7d-Ox-EgO"/>
                                 <include reference="vf6-fX-EWp"/>
-                                <include reference="pZH-Sw-M5U"/>
-                                <include reference="UPr-4x-s4u"/>
                                 <include reference="KxN-Z5-LuG"/>
                                 <include reference="QBN-O9-8Kr"/>
                                 <include reference="mAG-FY-aCP"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=regular-widthClass=compact"/>
                     </view>
                     <connections>
                         <outlet property="angleSlider" destination="g0c-g4-Sdj" id="htN-69-LcL"/>
                         <outlet property="gpuImageView" destination="8bC-Xf-vdC" id="qO5-GY-DEv"/>
+                        <outlet property="indicator" destination="wUb-Td-C1O" id="hRF-nh-05I"/>
                         <outlet property="sepiaSlider" destination="acN-Kn-wsD" id="cbY-oT-jPw"/>
                     </connections>
                 </viewController>
