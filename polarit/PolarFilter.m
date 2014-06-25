@@ -27,7 +27,6 @@ NSString *const kFragmentShader = SHADER_STRING
  uniform sampler2D inputImageTexture;
  const highp float PI = 3.1415926535897932384626433832795;
  const highp vec2 center = vec2(0.5);
- uniform highp float angle;
 
  void main() {
      highp vec4 color;
@@ -35,7 +34,7 @@ NSString *const kFragmentShader = SHADER_STRING
      
      if (pow(abs(calcPoint.x), 2.0) + pow(abs(calcPoint.y), 2.0) <= pow(0.5, 2.0)) {
          highp float rad = length(calcPoint) * 2.0;
-         highp float thita = (((atan(calcPoint.y, calcPoint.x))/ PI) + 1.0) / 2.0 + angle;
+         highp float thita = (((atan(calcPoint.y, calcPoint.x))/ PI) + 1.0) / 2.0;
          highp vec2 polar = vec2(thita, rad);
          color = texture2D(inputImageTexture, polar);
      } else {

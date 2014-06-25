@@ -11,23 +11,24 @@ import UIKit
 class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let videoCamera:GPUImageStillCamera
-    let polarFilter:PolarFilter
-    var effectFilter:GPUImageSepiaFilter!
+    
+    var customFilterClass:GPUImageFilter.Type?
+    var polarFilter:PolarFilter!
+    var sepiaFilter:GPUImageSepiaFilter!
     var rotateFilter:GPUImageTransformFilter!
     var lastFilter:GPUImageFilter!
+    
     @IBOutlet var gpuImageView:GPUImageView
     @IBOutlet var angleSlider:ASValueTrackingSlider
-    @IBOutlet var effectSlider:ASValueTrackingSlider
+    @IBOutlet var sepiaSlider:ASValueTrackingSlider
     
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
-        polarFilter = PolarFilter()
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     init(coder aDecoder: NSCoder!) {
         videoCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset1280x720, cameraPosition: .Back)
-        polarFilter = PolarFilter()
         super.init(coder: aDecoder)
     }
     
@@ -37,27 +38,15 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         videoCamera.outputImageOrientation = .Portrait
         gpuImageView.setInputRotation(kGPUImageNoRotation, atIndex: 0)
 
-        (lastFilter, effectFilter, rotateFilter) = buildFilters(videoCamera, target: gpuImageView, originalSize: CGSizeMake(720, 1280))
+        (lastFilter, sepiaFilter, rotateFilter, polarFilter) = buildFilters(videoCamera, target: gpuImageView, originalSize: CGSizeMake(720, 1280))
         
         angleSlider.setMaxFractionDigitsDisplayed(0)
         angleSlider.dataSource = self
         
         // GPUImageAmatorkaFilter
         // GPUImageMissEtikateFilter
+
         
-        let storyMenuItemImage = UIImage(named: "bg-menuitem.png")
-        let storyMenuItemImagePressed = UIImage(named: "bg-menuitem-highlighted.png")
-        let starImage = UIImage(named: "icon-star.png")
-
-        let starMenuItem1 = AwesomeMenuItem(image: storyMenuItemImage, highlightedImage: storyMenuItemImagePressed, contentImage: starImage, highlightedContentImage: nil)
-        let starMenuItem2 = AwesomeMenuItem(image: storyMenuItemImage, highlightedImage: storyMenuItemImagePressed, contentImage: starImage, highlightedContentImage: nil)
-        let startItem = AwesomeMenuItem(image: UIImage(named:"bg-addbutton.png"), highlightedImage: UIImage(named:"bg-addbutton-highlighted.png"), contentImage: UIImage(named: "icon-plus.png"), highlightedContentImage: UIImage(named:"icon-plus-highlighted.png"))
-
-        let menu = AwesomeMenu(frame: view.frame, menus:[startItem, starMenuItem1, starMenuItem2])
-        menu.menuWholeAngle = CGFloat(M_PI_2)
-        menu.rotateAngle = 0.0
-        menu.startPoint = CGPointMake(25, view.bounds.height - 25)
-        view.addSubview(menu)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,8 +72,8 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         rotateFilter.affineTransform = CGAffineTransformMakeRotation(sender.value / 180 * CGFloat(M_PI))
     }
     
-    @IBAction func effectChanged(sender:UISlider) {
-        effectFilter.intensity = sender.value
+    @IBAction func sepiaChanged(sender:UISlider) {
+        sepiaFilter.intensity = sender.value
     }
     
     func slider(slider: ASValueTrackingSlider!, stringForValue value: CFloat) -> String! {
@@ -102,12 +91,23 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         self.presentViewController(photoPicker, animated: true, completion: nil)
     }
 
+    @IBAction func pickAdditionalFilter() {
+        UIView.animateWithDuration(0.1, animations: {() -> Void in
+            var dx:Float
+            if (self.view.frame.origin.x > 0) {
+                dx = -50
+            } else {
+                dx = 50
+            }
+            self.view.frame.offset(dx: dx, dy: 0)
+        })
+    }
+    
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
         self.dismissViewControllerAnimated(true, completion: {() -> Void in
             if (image != nil) {
-                let size = image.size
                 let gpuImage = GPUImagePicture(image: image)
-                let filters = self.buildFilters(gpuImage, target: nil, originalSize: size)
+                let filters = self.buildFilters(gpuImage, target: nil, originalSize: image.size)
                 filters.lastFilter.useNextFrameForImageCapture()
                 gpuImage.processImage()
                 let polarImage = filters.lastFilter.imageFromCurrentFramebuffer()
@@ -125,7 +125,7 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         })
     }
     
-    func buildFilters(source:GPUImageOutput, target:GPUImageInput?, originalSize size:CGSize) -> (lastFilter:GPUImageFilter!, effectFilter:GPUImageSepiaFilter!, rotateFilter:GPUImageTransformFilter!) {
+    func buildFilters(source:GPUImageOutput, target:GPUImageInput?, originalSize size:CGSize) -> (lastFilter:GPUImageFilter!, effectFilter:GPUImageSepiaFilter!, rotateFilter:GPUImageTransformFilter!, polarFilter:PolarFilter!) {
         var scale:CGAffineTransform
         var crop: CGRect
         if (size.height < size.width) {
@@ -136,7 +136,6 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
             crop = CGRectMake(0, (size.height - size.width)/2/size.height, 1, size.width/size.height)
         }
 
-        
         let mirrorFilter = GPUImageTransformFilter()
         mirrorFilter.affineTransform = CGAffineTransformMakeRotation(CGFloat(M_PI))
         
@@ -145,23 +144,32 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         
         let cropFilter = GPUImageCropFilter(cropRegion: crop)
         
-        let effectFilter = GPUImageSepiaFilter()
-        effectFilter.intensity = effectSlider.value
+        let sepiaFilter = GPUImageSepiaFilter()
+        sepiaFilter.intensity = sepiaSlider.value
         
         let rotateFilter = GPUImageTransformFilter()
         rotateFilter.affineTransform = CGAffineTransformMakeRotation(angleSlider.value / 180 * CGFloat(M_PI))
         
+        let polarFilter = PolarFilter()
+        
         source.addTarget(mirrorFilter)
-        mirrorFilter.addTarget(scaleFilter)
+        
+        if let customFilter:GPUImageFilter = customFilterClass?() {            
+            mirrorFilter.addTarget(customFilter)
+            customFilter.addTarget(scaleFilter)
+        } else {
+            mirrorFilter.addTarget(scaleFilter)
+        }
         scaleFilter.addTarget(cropFilter)
-        cropFilter.addTarget(effectFilter)
-        effectFilter.addTarget(polarFilter)
+        cropFilter.addTarget(sepiaFilter)
+        sepiaFilter.addTarget(polarFilter)
         polarFilter.addTarget(rotateFilter)
+        
         if let gpuTarget = target {
             rotateFilter.addTarget(gpuTarget)
         }
         
-        return (rotateFilter, effectFilter, rotateFilter)
+        return (rotateFilter, sepiaFilter, rotateFilter, polarFilter)
     }
     
    

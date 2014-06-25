@@ -16,38 +16,94 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-180" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-g4-Sdj" customClass="ASValueTrackingSlider">
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-180" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-g4-Sdj" customClass="ASValueTrackingSlider">
                                 <rect key="frame" x="13" y="70" width="454" height="31"/>
                                 <connections>
                                     <action selector="angleChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="v9y-WR-LYC"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="acN-Kn-wsD" customClass="ASValueTrackingSlider">
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="acN-Kn-wsD" customClass="ASValueTrackingSlider">
                                 <rect key="frame" x="13" y="150" width="454" height="31"/>
                                 <connections>
-                                    <action selector="effectChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="fuz-6h-Fkh"/>
+                                    <action selector="sepiaChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eiL-Kx-oqQ"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1Q-BK-ODc">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" image="pano.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=compact"/>
-                                <connections>
-                                    <action selector="pickPanoramaFromLibrary" destination="BYZ-38-t0r" eventType="touchUpInside" id="JJh-KS-3UI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hp-rV-gu8">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hp-rV-gu8">
                                 <rect key="frame" x="158" y="352" width="164" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="3b4-vx-tvF"/>
+                                    <constraint firstAttribute="height" constant="128" id="3b4-vx-tvF">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="96"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="128" id="ZQ0-Sm-fyF">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="96"/>
+                                    </constraint>
                                 </constraints>
                                 <state key="normal" image="camera-128.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZQ0-Sm-fyF"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ZQ0-Sm-fyF"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="savePicture" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Y6-og-X7a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQZ-ua-qCj">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="4gm-aI-vFD"/>
+                                    <constraint firstAttribute="width" constant="64" id="cFy-2e-MNz"/>
+                                </constraints>
+                                <state key="normal" image="filter.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4gm-aI-vFD"/>
+                                        <exclude reference="cFy-2e-MNz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="4gm-aI-vFD"/>
+                                        <include reference="cFy-2e-MNz"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="pickAdditionalFilter" destination="BYZ-38-t0r" eventType="touchUpInside" id="5S8-67-D0i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1Q-BK-ODc">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="SBY-EG-e5c"/>
+                                    <constraint firstAttribute="width" constant="64" id="URz-c1-PSq"/>
+                                </constraints>
+                                <state key="normal" image="pano.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SBY-EG-e5c"/>
+                                        <exclude reference="URz-c1-PSq"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="SBY-EG-e5c"/>
+                                        <include reference="URz-c1-PSq"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact"/>
+                                <connections>
+                                    <action selector="pickPanoramaFromLibrary" destination="BYZ-38-t0r" eventType="touchUpInside" id="JJh-KS-3UI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -56,18 +112,21 @@
                             <constraint firstItem="acN-Kn-wsD" firstAttribute="leading" secondItem="g0c-g4-Sdj" secondAttribute="trailing" constant="15" id="Bbh-gY-g2o"/>
                             <constraint firstItem="acN-Kn-wsD" firstAttribute="height" secondItem="g0c-g4-Sdj" secondAttribute="height" id="FWT-rv-J6K"/>
                             <constraint firstAttribute="trailing" secondItem="acN-Kn-wsD" secondAttribute="trailing" constant="15" id="JwV-bl-SDp"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="G1Q-BK-ODc" secondAttribute="bottom" id="Xfm-Bq-oKI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="G1Q-BK-ODc" secondAttribute="bottom" constant="15" id="KxN-Z5-LuG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="JQZ-ua-qCj" secondAttribute="bottom" constant="15" id="QBN-O9-8Kr"/>
+                            <constraint firstAttribute="trailing" secondItem="G1Q-BK-ODc" secondAttribute="trailing" constant="15" id="UPr-4x-s4u"/>
                             <constraint firstItem="g0c-g4-Sdj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="i62-M5-me0"/>
-                            <constraint firstAttribute="trailing" secondItem="G1Q-BK-ODc" secondAttribute="trailing" constant="15" id="iXt-3C-AaQ"/>
-                            <constraint firstItem="4hp-rV-gu8" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="kcy-Pv-1EN"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4hp-rV-gu8" secondAttribute="bottom" constant="15" id="mAG-FY-aCP"/>
+                            <constraint firstItem="JQZ-ua-qCj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="pZH-Sw-M5U"/>
                             <constraint firstItem="acN-Kn-wsD" firstAttribute="width" secondItem="g0c-g4-Sdj" secondAttribute="width" id="qMB-1Y-Jxl"/>
                             <constraint firstItem="g0c-g4-Sdj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="uZN-UZ-TD2"/>
                             <constraint firstItem="acN-Kn-wsD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="v7d-Ox-EgO"/>
-                            <constraint firstAttribute="centerX" secondItem="4hp-rV-gu8" secondAttribute="centerX" id="yuT-pV-NTx"/>
+                            <constraint firstAttribute="centerX" secondItem="4hp-rV-gu8" secondAttribute="centerX" id="vf6-fX-EWp"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="JQZ-ua-qCj"/>
                                 <exclude reference="G1Q-BK-ODc"/>
                             </mask>
                             <mask key="constraints">
@@ -78,12 +137,17 @@
                                 <exclude reference="JwV-bl-SDp"/>
                                 <exclude reference="qMB-1Y-Jxl"/>
                                 <exclude reference="v7d-Ox-EgO"/>
-                                <exclude reference="Xfm-Bq-oKI"/>
-                                <exclude reference="iXt-3C-AaQ"/>
+                                <exclude reference="vf6-fX-EWp"/>
+                                <exclude reference="pZH-Sw-M5U"/>
+                                <exclude reference="UPr-4x-s4u"/>
+                                <exclude reference="KxN-Z5-LuG"/>
+                                <exclude reference="QBN-O9-8Kr"/>
+                                <exclude reference="mAG-FY-aCP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
+                                <include reference="JQZ-ua-qCj"/>
                                 <include reference="G1Q-BK-ODc"/>
                             </mask>
                         </variation>
@@ -96,15 +160,19 @@
                                 <include reference="JwV-bl-SDp"/>
                                 <include reference="qMB-1Y-Jxl"/>
                                 <include reference="v7d-Ox-EgO"/>
-                                <include reference="Xfm-Bq-oKI"/>
-                                <include reference="iXt-3C-AaQ"/>
+                                <include reference="vf6-fX-EWp"/>
+                                <include reference="pZH-Sw-M5U"/>
+                                <include reference="UPr-4x-s4u"/>
+                                <include reference="KxN-Z5-LuG"/>
+                                <include reference="QBN-O9-8Kr"/>
+                                <include reference="mAG-FY-aCP"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="angleSlider" destination="g0c-g4-Sdj" id="htN-69-LcL"/>
-                        <outlet property="effectSlider" destination="acN-Kn-wsD" id="m60-zL-vlD"/>
                         <outlet property="gpuImageView" destination="8bC-Xf-vdC" id="qO5-GY-DEv"/>
+                        <outlet property="sepiaSlider" destination="acN-Kn-wsD" id="cbY-oT-jPw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -113,7 +181,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera-128.png" width="128" height="128"/>
+        <image name="camera-128.png" width="96" height="96"/>
+        <image name="filter.png" width="64" height="64"/>
         <image name="pano.png" width="64" height="34"/>
     </resources>
 </document>

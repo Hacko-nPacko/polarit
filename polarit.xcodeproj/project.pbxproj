@@ -19,6 +19,7 @@
 		F94AE9C9195596A7000E6F4D /* launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94AE9C8195596A7000E6F4D /* launch@2x.png */; };
 		F95A19C3195A2A3B003B0E45 /* lookup_amatorka.png in Resources */ = {isa = PBXBuildFile; fileRef = F95A19C2195A2A3B003B0E45 /* lookup_amatorka.png */; };
 		F95A19CB195A344B003B0E45 /* lookup_miss_etikate.png in Resources */ = {isa = PBXBuildFile; fileRef = F95A19CA195A344B003B0E45 /* lookup_miss_etikate.png */; };
+		F96A528C195B45C700B6B1E2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96A528B195B45C700B6B1E2 /* QuartzCore.framework */; };
 		F9CE1D45195AC5C3001DD788 /* pano.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CE1D44195AC5C3001DD788 /* pano.png */; };
 		F9CE1D47195ACC10001DD788 /* filter.png in Resources */ = {isa = PBXBuildFile; fileRef = F9CE1D46195ACC10001DD788 /* filter.png */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		F94AE9C8195596A7000E6F4D /* launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch@2x.png"; sourceTree = "<group>"; };
 		F95A19C2195A2A3B003B0E45 /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_amatorka.png; sourceTree = "<group>"; };
 		F95A19CA195A344B003B0E45 /* lookup_miss_etikate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_miss_etikate.png; sourceTree = "<group>"; };
+		F96A528B195B45C700B6B1E2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F9CE1D44195AC5C3001DD788 /* pano.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pano.png; sourceTree = "<group>"; };
 		F9CE1D46195ACC10001DD788 /* filter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter.png; sourceTree = "<group>"; };
 		F9DD26BD195314A900298B9E /* polarit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "polarit-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96A528C195B45C700B6B1E2 /* QuartzCore.framework in Frameworks */,
 				5572F3B7B33649C9B6A0F93E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,6 +83,7 @@
 		EBBBC9A7FD294EE09D59D634 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F96A528B195B45C700B6B1E2 /* QuartzCore.framework */,
 				3A1C2D19C3EE4B50B99D39AC /* libPods.a */,
 			);
 			name = Frameworks;

@@ -9,6 +9,8 @@
 
 #import <GPUImage/GPUImage.h>
 #import <ASValueTrackingSlider/ASValueTrackingSlider.h>
+#import <BounceMenuController/BounceMenuController.h>
+
 #import <OpenGLES/gltypes.h>
-#import <AwesomeMenu/AwesomeMenu.h>
+#import <QuartzCore/QuartzCore.h>
 #import "PolarFilter.h"
