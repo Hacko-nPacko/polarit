@@ -10,4 +10,5 @@
 #import <GPUImage/GPUImage.h>
 #import <ASValueTrackingSlider/ASValueTrackingSlider.h>
 #import <OpenGLES/gltypes.h>
+#import <AwesomeMenu/AwesomeMenu.h>
 #import "PolarFilter.h"

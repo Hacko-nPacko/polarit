@@ -44,7 +44,20 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         
         // GPUImageAmatorkaFilter
         // GPUImageMissEtikateFilter
-       
+        
+        let storyMenuItemImage = UIImage(named: "bg-menuitem.png")
+        let storyMenuItemImagePressed = UIImage(named: "bg-menuitem-highlighted.png")
+        let starImage = UIImage(named: "icon-star.png")
+
+        let starMenuItem1 = AwesomeMenuItem(image: storyMenuItemImage, highlightedImage: storyMenuItemImagePressed, contentImage: starImage, highlightedContentImage: nil)
+        let starMenuItem2 = AwesomeMenuItem(image: storyMenuItemImage, highlightedImage: storyMenuItemImagePressed, contentImage: starImage, highlightedContentImage: nil)
+        let startItem = AwesomeMenuItem(image: UIImage(named:"bg-addbutton.png"), highlightedImage: UIImage(named:"bg-addbutton-highlighted.png"), contentImage: UIImage(named: "icon-plus.png"), highlightedContentImage: UIImage(named:"icon-plus-highlighted.png"))
+
+        let menu = AwesomeMenu(frame: view.frame, menus:[startItem, starMenuItem1, starMenuItem2])
+        menu.menuWholeAngle = CGFloat(M_PI_2)
+        menu.rotateAngle = 0.0
+        menu.startPoint = CGPointMake(25, view.bounds.height - 25)
+        view.addSubview(menu)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -150,6 +163,7 @@ class ViewController: UIViewController, ASValueTrackingSliderDataSource, UIImage
         
         return (rotateFilter, effectFilter, rotateFilter)
     }
-
+    
+   
 }
 
