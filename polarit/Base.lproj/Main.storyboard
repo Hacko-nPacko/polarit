@@ -16,6 +16,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2K-UU-LNv" customClass="GPUImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                </variation>
+                            </view>
                             <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-180" maxValue="180" translatesAutoresizingMaskIntoConstraints="NO" id="g0c-g4-Sdj" customClass="ASValueTrackingSlider">
                                 <rect key="frame" x="13" y="70" width="454" height="31"/>
                                 <connections>
@@ -168,7 +175,7 @@
                     </view>
                     <connections>
                         <outlet property="angleSlider" destination="g0c-g4-Sdj" id="htN-69-LcL"/>
-                        <outlet property="gpuImageView" destination="8bC-Xf-vdC" id="qO5-GY-DEv"/>
+                        <outlet property="gpuImageView" destination="l2K-UU-LNv" id="6D2-or-RqX"/>
                         <outlet property="indicator" destination="wUb-Td-C1O" id="hRF-nh-05I"/>
                         <outlet property="sepiaSlider" destination="acN-Kn-wsD" id="cbY-oT-jPw"/>
                     </connections>

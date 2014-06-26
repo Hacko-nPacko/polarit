@@ -53,7 +53,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
 
     override func viewWillDisappear(animated: Bool) {
-        NSLog("view did disappear")
         videoCamera.stopCameraCapture()
     }
     
@@ -64,7 +63,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func savePicture() {
         indicator.startAnimating()
         videoCamera.capturePhotoAsImageProcessedUpToFilter(lastFilter, withCompletionHandler: { (image, error) -> Void in
-            NSLog("saving %@", image)
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             self.indicator.stopAnimating()
         })
@@ -124,7 +122,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         })
     }
     
-
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController!) {
         self.dismissViewControllerAnimated(true, completion: {() -> Void in
