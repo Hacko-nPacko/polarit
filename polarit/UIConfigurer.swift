@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 func configureIndicator(indicator: TYMActivityIndicatorView) {
     indicator.hidesWhenStopped = true
     indicator.indicatorImage = UIImage(named: "indicator-spinner-large.png")

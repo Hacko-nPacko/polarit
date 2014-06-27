@@ -77,6 +77,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func pickPanoramaFromLibrary() {
+        videoCamera.stopCameraCapture()
         let photoPicker = UIImagePickerController()
         photoPicker.sourceType = .PhotoLibrary
         photoPicker.delegate = self
@@ -84,16 +85,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func pickAdditionalFilter() {
+        var dx:Float
+        if (self.gpuImageView.frame.origin.x > 0) {
+            dx = -50
+        } else {
+            dx = 50
+        }
+
         UIView.animateWithDuration(0.2, animations: {() -> Void in
-            var dx:Float
-            if (self.view.frame.origin.x > 0) {
-                dx = -50
-            } else {
-                dx = 50
-            }
-            self.view.frame.offset(dx: dx, dy: 0)
+            self.gpuImageView.frame.offset(dx: dx, dy: 0)
+            self.sepiaSlider.frame.offset(dx: dx, dy: 0)
+            self.angleSlider.frame.offset(dx: dx, dy: 0)
         })
         // TODO
+    }
+    
+    @IBAction func correctFocus(sender:UITapGestureRecognizer) {
+        if videoCamera.inputCamera != nil {
+            let camera =  videoCamera.inputCamera
+            if (camera.focusPointOfInterestSupported) {
+                let point = sender.locationInView(sender.view)
+                var outError: NSErrorPointer = nil
+                if (camera.lockForConfiguration(outError)) {
+                    camera.focusPointOfInterest = point
+                    camera.focusMode = .AutoFocus
+                    camera.unlockForConfiguration()
+                } else {
+                    NSLog("having problems with focus: %@", outError.memory!)
+                }
+                
+            }
+        }
+        
     }
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
@@ -102,7 +125,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if (image != nil) {
                 let polarImageView = processImage(image: image, frame: self.view.frame, sepia: self.sepiaSlider.value, angle: self.angleSlider.value)
                 self.view.addSubview(polarImageView)
-                UIView.animateWithDuration(0.5, delay: 0, options: .TransitionCrossDissolve, animations: {() -> Void in
+                UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseIn, animations: {() -> Void in
                     polarImageView.alpha = 1
                 }, completion: {(success:Bool) -> Void in
                 })
@@ -128,7 +151,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.videoCamera.startCameraCapture()
         })
     }
-    
     
     
    
