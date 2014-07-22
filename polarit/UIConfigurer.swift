@@ -52,10 +52,10 @@ func buildFilters(#source:GPUImageOutput, #target:GPUImageInput?, originalSize s
     let cropFilter = GPUImageCropFilter(cropRegion: crop)
     
     let sepiaFilter = GPUImageSepiaFilter()
-    sepiaFilter.intensity = sepia
+    sepiaFilter.intensity = CGFloat(sepia)
     
     let rotateFilter = GPUImageTransformFilter()
-    rotateFilter.affineTransform = CGAffineTransformMakeRotation(angle / 180 * CGFloat(M_PI))
+    rotateFilter.affineTransform = CGAffineTransformMakeRotation(CGFloat(angle) / 180.0 * CGFloat(M_PI))
     
     let polarFilter = PolarFilter()
     

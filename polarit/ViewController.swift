@@ -69,11 +69,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func angleChanged(sender:UISlider) {
-        rotateFilter.affineTransform = CGAffineTransformMakeRotation(sender.value / 180 * CGFloat(M_PI))
+        rotateFilter.affineTransform = CGAffineTransformMakeRotation(CGFloat(CGFloat(sender.value) / 180.0 * CGFloat(M_PI)))
     }
     
     @IBAction func sepiaChanged(sender:UISlider) {
-        sepiaFilter.intensity = sender.value
+        sepiaFilter.intensity = CGFloat(sender.value)
     }
     
     @IBAction func pickPanoramaFromLibrary() {
@@ -85,18 +85,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     @IBAction func pickAdditionalFilter() {
-        var dx:Float
-        if (self.gpuImageView.frame.origin.x > 0) {
-            dx = -50
-        } else {
-            dx = 50
-        }
-
-        UIView.animateWithDuration(0.2, animations: {() -> Void in
-            self.gpuImageView.frame.offset(dx: dx, dy: 0)
-            self.sepiaSlider.frame.offset(dx: dx, dy: 0)
-            self.angleSlider.frame.offset(dx: dx, dy: 0)
-        })
         // TODO
     }
     
